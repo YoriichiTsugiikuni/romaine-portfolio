@@ -1,0 +1,17 @@
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: 'http://localhost:5000/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+
+export const getProfile = () => api.get('/profile')
+export const getProjects = () => api.get('/projects')
+export const getSkills = () => api.get('/skills')
+export const getExperience = () => api.get('/experience')
+export const getEducation = () => api.get('/education')
+export const sendMessage = (data) => api.post('/contact', data)
+
+export default api
