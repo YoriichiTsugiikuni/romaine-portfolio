@@ -109,14 +109,16 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   font-weight: 500;
   color: var(--color-text);
   transition: var(--transition);
-  padding: 6px 16px;
+  padding: 8px 20px;
   border-radius: 2px;
   border: 1.5px solid transparent;
+  letter-spacing: 0.3px;
 }
 
 .navbar-links a:hover {
   color: var(--color-primary);
   border-color: var(--color-primary);
+  letter-spacing: 1px;
 }
 
 .navbar-links a.active {
@@ -124,6 +126,8 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   color: #0f0f0f;
   font-weight: 600;
   border-color: var(--color-primary);
+  padding: 8px 20px;
+  letter-spacing: 0.3px;
 }
 
 .hamburger {
