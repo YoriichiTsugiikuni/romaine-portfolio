@@ -58,7 +58,7 @@ const scrollOpacity = ref(1)
 
 function handleScroll() {
   const scrollY = window.scrollY
-  scrollOpacity.value = Math.max(0, 1 - scrollY / 200)
+  scrollOpacity.value = Math.max(0, 1 - scrollY / 400)
 }
 
 onMounted(() => window.addEventListener('scroll', handleScroll))
@@ -205,7 +205,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 .hero-scroll {
   position: absolute;
-  bottom: 32px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

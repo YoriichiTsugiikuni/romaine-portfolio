@@ -4,12 +4,11 @@
       <a href="#hero" class="navbar-logo">RD</a>
 
       <ul class="navbar-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact" class="btn btn-primary navbar-cta">Contact</a></li>
+        <li v-for="link in links" :key="link.href">
+          <a :href="link.href" :class="{ active: activeSection === link.section }" @click="setActive(link.section)">
+            {{ link.label }}
+          </a>
+        </li>
       </ul>
 
       <button class="hamburger" @click="menuOpen = !menuOpen">
@@ -20,12 +19,7 @@
     </div>
 
     <div class="mobile-menu" :class="{ open: menuOpen }">
-      <a href="#about" @click="menuOpen = false">About</a>
-      <a href="#skills" @click="menuOpen = false">Skills</a>
-      <a href="#projects" @click="menuOpen = false">Projects</a>
-      <a href="#experience" @click="menuOpen = false">Experience</a>
-      <a href="#education" @click="menuOpen = false">Education</a>
-      <a href="#contact" @click="menuOpen = false">Contact</a>
+      <a v-for="link in links" :key="link.href" :href="link.href" @click="menuOpen = false">{{ link.label }}</a>
     </div>
   </nav>
 </template>
@@ -35,9 +29,36 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const isScrolled = ref(false)
 const menuOpen = ref(false)
+const activeSection = ref('hero')
+
+const links = [
+  { href: '#about', label: 'About', section: 'about' },
+  { href: '#skills', label: 'Skills', section: 'skills' },
+  { href: '#projects', label: 'Projects', section: 'projects' },
+  { href: '#experience', label: 'Experience', section: 'experience' },
+  { href: '#education', label: 'Education', section: 'education' },
+  { href: '#contact', label: 'Contact', section: 'contact' },
+]
+
+const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'education', 'contact']
+
+function setActive(section) {
+  activeSection.value = section
+}
 
 function handleScroll() {
   isScrolled.value = window.scrollY > 50
+
+  for (const section of sections) {
+    const el = document.getElementById(section)
+    if (el) {
+      const rect = el.getBoundingClientRect()
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        activeSection.value = section
+        break
+      }
+    }
+  }
 }
 
 onMounted(() => window.addEventListener('scroll', handleScroll))
@@ -79,7 +100,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 8px;
   list-style: none;
 }
 
@@ -88,15 +109,21 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   font-weight: 500;
   color: var(--color-text);
   transition: var(--transition);
+  padding: 6px 16px;
+  border-radius: 2px;
+  border: 1.5px solid transparent;
 }
 
 .navbar-links a:hover {
   color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
-.navbar-cta {
-  padding: 8px 20px !important;
-  font-size: 14px !important;
+.navbar-links a.active {
+  background: var(--color-primary);
+  color: #0f0f0f;
+  font-weight: 600;
+  border-color: var(--color-primary);
 }
 
 .hamburger {

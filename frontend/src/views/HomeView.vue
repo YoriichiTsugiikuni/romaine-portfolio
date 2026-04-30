@@ -7,6 +7,8 @@
     <ProjectsSection />
     <ExperienceSection />
     <EducationSection />
+    <ContactSection />
+    <FooterSection />
   </div>
 </template>
 
@@ -20,6 +22,8 @@ import SkillsSection from '../components/SkillsSection.vue'
 import ProjectsSection from '../components/ProjectsSection.vue'
 import ExperienceSection from '../components/ExperienceSection.vue'
 import EducationSection from '../components/EducationSection.vue'
+import ContactSection from '../components/ContactSection.vue'
+import FooterSection from '../components/FooterSection.vue'
 
 const store = usePortfolioStore()
 

@@ -18,7 +18,7 @@
 
       <div class="about-stats">
         <div class="stat-card">
-          <span class="stat-number gold">2+</span>
+          <span class="stat-number gold">5+</span>
           <span class="stat-label">Years of coding</span>
         </div>
         <div class="stat-card">
