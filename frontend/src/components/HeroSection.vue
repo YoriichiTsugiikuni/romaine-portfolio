@@ -23,15 +23,29 @@
 
       <div class="hero-visual">
         <div class="avatar-ring">
-            <img 
-             v-if="profile?.avatar_url" 
-             :src="profile.avatar_url" 
-             alt="Romaine Dixon" 
-             class="avatar-img"
-                />
-         <div v-else class="avatar-initials">RD</div>
-            </div>
-        
+          <img
+            v-if="profile?.avatar_url"
+            :src="profile.avatar_url"
+            alt="Romaine Dixon"
+            class="avatar-img"
+          />
+          <div v-else class="avatar-initials">RD</div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-number">5+</span>
+            <span class="hero-stat-label">Years Experience</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">3+</span>
+            <span class="hero-stat-label">Projects Built</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">2</span>
+            <span class="hero-stat-label">Degrees</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -69,14 +83,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   background: var(--color-bg);
   padding-top: 80px;
   position: relative;
-  
-}
-
-.avatar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
 .hero-inner {
@@ -144,10 +150,10 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 .hero-visual {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  height: 400px;
+  gap: 32px;
 }
 
 .avatar-ring {
@@ -161,6 +167,13 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   background: var(--color-bg-secondary);
 }
 
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .avatar-initials {
   font-size: 64px;
   font-weight: 700;
@@ -168,34 +181,34 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   letter-spacing: 2px;
 }
 
-.floating-card {
-  position: absolute;
-  background: var(--color-bg-card);
+.hero-stats {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: 2px;
-  padding: 10px 16px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--color-text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  padding: 16px 20px;
 }
 
-.card-one { top: 60px; right: 20px; }
-.card-two { bottom: 80px; left: 20px; }
-
-.card-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  display: inline-block;
+.hero-stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primary);
 }
 
-.card-dot.green {
-  background: #10b981;
+.hero-stat-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .hero-scroll {
