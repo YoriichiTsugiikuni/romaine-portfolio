@@ -31,12 +31,7 @@
                 />
          <div v-else class="avatar-initials">RD</div>
             </div>
-        <div class="floating-card card-one">
-          <span class="card-dot"></span> Flask API running
-        </div>
-        <div class="floating-card card-two">
-          <span class="card-dot green"></span> Vue 3 connected
-        </div>
+        
       </div>
     </div>
 
