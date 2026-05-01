@@ -34,16 +34,16 @@
 
         <div class="hero-stats">
           <div class="hero-stat">
-            <span class="hero-stat-number">5+</span>
-            <span class="hero-stat-label">Years Experience</span>
+            <span class="stat-dot"></span>
+            <span class="stat-text">Flask API <span class="stat-live">live</span></span>
           </div>
           <div class="hero-stat">
-            <span class="hero-stat-number">3+</span>
-            <span class="hero-stat-label">Projects Built</span>
+            <span class="stat-dot green"></span>
+            <span class="stat-text">Vue 3 <span class="stat-live">connected</span></span>
           </div>
           <div class="hero-stat">
-            <span class="hero-stat-number">2</span>
-            <span class="hero-stat-label">Degrees</span>
+            <span class="stat-dot blue"></span>
+            <span class="stat-text">PostgreSQL <span class="stat-live">running</span></span>
           </div>
         </div>
       </div>
@@ -183,32 +183,50 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 .hero-stats {
   display: flex;
-  gap: 16px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 260px;
 }
 
 .hero-stat {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 12px;
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: 2px;
-  padding: 16px 20px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text);
 }
 
-.hero-stat-number {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--color-primary);
+.stat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
 }
 
-.hero-stat-label {
-  font-size: 11px;
+.stat-dot.green {
+  background: #10b981;
+}
+
+.stat-dot.blue {
+  background: #3b82f6;
+}
+
+.stat-live {
   color: var(--color-text-muted);
-  text-align: center;
-  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 .hero-scroll {
